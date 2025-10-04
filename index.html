@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebras Challenge - Homework Worksheet</title>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { margin: 0; padding: 20px; }
+            .container { box-shadow: none !important; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            border-bottom: 3px solid #4285f4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #202124;
+            font-size: 28px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #5f6368;
+            font-size: 16px;
+        }
+        
+        .student-info {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .info-field {
+            flex: 1;
+        }
+        
+        .info-field label {
+            display: block;
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .info-field input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            padding: 5px 0;
+            font-size: 16px;
+            background: transparent;
+        }
+        
+        .question {
+            margin: 30px 0;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background: #4285f4;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .question-title {
+            font-size: 18px;
+            color: #202124;
+            font-weight: 500;
+        }
+        
+        .question-content {
+            margin: 15px 0;
+            color: #3c4043;
+        }
+        
+        .example-box {
+            background: #f1f3f4;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .choices {
+            margin: 20px 0;
+        }
+        
+        .choice {
+            margin: 8px 0;
+            padding: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .choice input[type="radio"] {
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+        
+        .choice label {
+            color: #3c4043;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .work-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .work-label {
+            font-weight: 500;
+            color: #3c4043;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .work-area {
+            width: 100%;
+            min-height: 120px;
+            padding: 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            background: white;
+            resize: vertical;
+        }
+        
+        .graph-display {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        pre {
+            background: #f1f3f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #dadce0;
+            text-align: center;
+            color: #5f6368;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(66,133,244,0.3);
+            transition: all 0.3s;
+        }
+        
+        .print-btn:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(66,133,244,0.4);
+        }
+        
+        .submission-instructions {
+            background: #e6f7ff;
+            border: 2px solid #4285f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .submission-instructions h2 {
+            color: #4285f4;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .submission-instructions ol {
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        
+        .submission-instructions li {
+            margin-bottom: 10px;
+            color: #3c4043;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦫 Bebras Challenge - Homework Worksheet</h1>
+            <p class="subtitle">Computational Thinking Practice Problems</p>
+            <p class="subtitle">Estimated Time: 30 minutes</p>
+        </div>
+        
+        <div class="student-info">
+            <div class="info-field">
+                <label>Name:</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="info-field">
+                <label>Date:</label>
+                <input type="date">
+            </div>
+        </div>
+        
+        <!-- Question 1 -->
+        <div class="question">
+            <div class="question-header">
+                <div class="question-number">1</div>
+                <div class="question-title">Message Encryption</div>
+            </div>
+            <div class="question-content">
+                <p><strong>Background:</strong> Encryption is a way to scramble messages so only the intended recipient can read them. The Caesar cipher is one of the oldest encryption methods, where each letter is shifted by a fixed number of positions in the alphabet.</p>
+                
+                <p><strong>How it works:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>To encrypt: shift each letter forward by the key number</li>
+                    <li>To decrypt: shift each letter backward by the key number</li>
+                    <li>If you go past Z, wrap around to A (and vice versa)</li>
+                </ul>
+                
+                <div class="example-box">
+                    <strong>Examples with key = 3:</strong><br>
+                    Encrypt "CAT" → "FDW" (C+3=F, A+3=D, T+3=W)<br>
+                    Encrypt "DOG" → "GRJ" (D+3=G, O+3=R, G+3=J)<br>
+                    Encrypt "XYZ" → "ABC" (X+3=A, Y+3=B, Z+3=C - wraps around!)<br>
+                    <br>
+                    Decrypt "FDW" → "CAT" (F-3=C, D-3=A, W-3=T)
+                </div>
+                
+                <p><strong>Problem:</strong> You intercepted an encrypted message: <strong>"FRGH"</strong></p>
+                <p>If it was encrypted with a Caesar cipher using key = 3, what was the original message?</p>
+            </div>
+            
+            <div class="choices">
+                <div class="choice">
+                    <input type="radio" name="q1" id="q1a" value="A">
+                    <label for="q1a">A) FISH</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q1" id="q1b" value="B">
+                    <label for="q1b">B) CODE</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q1" id="q1c" value="C">
+                    <label for="q1c">C) BEAR</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q1" id="q1d" value="D">
+                    <label for="q1d">D) JOKE</label>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <label class="work-label">Show Your Work:</label>
+                <textarea class="work-area" placeholder="Show how you decrypted each letter..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="question">
+            <div class="question-header">
+                <div class="question-number">2</div>
+                <div class="question-title">Stack Computer</div>
+            </div>
+            <div class="question-content">
+                <p><strong>Background:</strong> Stack Computers use a special notation called Reverse Polish Notation (RPN). Instead of writing "3 + 4", we write "3 4 +" (numbers first, then operation).</p>
+                
+                <p><strong>How to convert regular math to RPN:</strong></p>
+                <ol style="margin-left: 20px;">
+                    <li>Write numbers in the order they appear</li>
+                    <li>Put operations after their numbers</li>
+                    <li>For complex expressions, work from innermost parentheses outward</li>
+                </ol>
+                
+                <div class="example-box">
+                    <strong>Simple Examples:</strong><br>
+                    3 + 4 becomes → 3 4 +<br>
+                    5 - 2 becomes → 5 2 -<br>
+                    6 × 7 becomes → 6 7 ×<br>
+                    <br>
+                    <strong>With Parentheses:</strong><br>
+                    (2 + 3) × 4 becomes → 2 3 + 4 ×<br>
+                    5 + (6 × 7) becomes → 5 6 7 × +<br>
+                </div>
+                
+                <p><strong>Problem:</strong> Convert this expression to RPN: <strong>7 × (5 + 3) - 4</strong></p>
+            </div>
+            
+            <div class="choices">
+                <div class="choice">
+                    <input type="radio" name="q2" id="q2a" value="A">
+                    <label for="q2a">A) 7 5 3 + × 4 -</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q2" id="q2b" value="B">
+                    <label for="q2b">B) 5 3 + 7 × 4 -</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q2" id="q2c" value="C">
+                    <label for="q2c">C) 7 5 + 3 × 4 -</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q2" id="q2d" value="D">
+                    <label for="q2d">D) 7 × 5 3 + 4 -</label>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <label class="work-label">Show Your Work:</label>
+                <textarea class="work-area" placeholder="Show step by step how you converted to RPN..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question">
+            <div class="question-header">
+                <div class="question-number">3</div>
+                <div class="question-title">Robot Grid Navigation</div>
+            </div>
+            <div class="question-content">
+                <p><strong>Background:</strong> A robot moves on a coordinate grid. The grid uses (x, y) coordinates where:</p>
+                <ul style="margin-left: 20px;">
+                    <li>x = horizontal position (increases going right)</li>
+                    <li>y = vertical position (increases going up)</li>
+                    <li>The robot starts at position (0, 0)</li>
+                </ul>
+                
+                <div class="example-box">
+                    <strong>Movement Commands:</strong><br>
+                    Move RIGHT 2: adds 2 to x-coordinate<br>
+                    Move LEFT 3: subtracts 3 from x-coordinate<br>
+                    Move UP 1: adds 1 to y-coordinate<br>
+                    Move DOWN 4: subtracts 4 from y-coordinate<br>
+                    <br>
+                    <strong>Example:</strong><br>
+                    Start: (0, 0)<br>
+                    Move RIGHT 3 → (3, 0)<br>
+                    Move UP 2 → (3, 2)<br>
+                    Move LEFT 1 → (2, 2)<br>
+                    Final position: (2, 2)
+                </div>
+                
+                <p><strong>Problem:</strong> The robot starts at (0, 0) and executes:</p>
+                <pre>REPEAT 2 TIMES:
+    Move RIGHT 3
+    Move UP 2
+    Move LEFT 1
+END REPEAT</pre>
+                <p>What is the robot's final position?</p>
+            </div>
+            
+            <div class="choices">
+                <div class="choice">
+                    <input type="radio" name="q3" id="q3a" value="A">
+                    <label for="q3a">A) (4, 4)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q3" id="q3b" value="B">
+                    <label for="q3b">B) (2, 2)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q3" id="q3c" value="C">
+                    <label for="q3c">C) (6, 4)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q3" id="q3d" value="D">
+                    <label for="q3d">D) (3, 2)</label>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <label class="work-label">Show Your Work:</label>
+                <textarea class="work-area" placeholder="Track the robot's position after each command..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question">
+            <div class="question-header">
+                <div class="question-number">4</div>
+                <div class="question-title">Photo Sharing Network</div>
+            </div>
+            <div class="question-content">
+                <p><strong>Background:</strong> In the BeaverGram social network, when you post a photo, it's seen by:</p>
+                <ul style="margin-left: 20px;">
+                    <li>You (the poster)</li>
+                    <li>All your direct friends</li>
+                    <li>Your friends can show it to their other friends by "sharing"</li>
+                </ul>
+                
+                <p><strong>The Network:</strong></p>
+                <div class="graph-display">
+                    <pre>
+        Amy          Ben
+         |            |
+         |            |
+        Carl -------- Dana -------- Emma -------- Finn
+    </pre>
+                    <p style="font-size: 14px; color: #666;">Lines show friendships</p>
+                </div>
+                
+                <p><strong>Friendships:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Amy is friends with: Carl</li>
+                    <li>Ben is friends with: Dana</li>
+                    <li>Carl is friends with: Amy, Dana</li>
+                    <li>Dana is friends with: Carl, Ben, Emma</li>
+                    <li>Emma is friends with: Dana, Finn</li>
+                    <li>Finn is friends with: Emma</li>
+                </ul>
+                
+                <p><strong>Problem:</strong> If each person posts one photo and all their friends share it exactly once with their other friends, whose photo will be seen by the most people total?</p>
+            </div>
+            
+            <div class="choices">
+                <div class="choice">
+                    <input type="radio" name="q4" id="q4a" value="A">
+                    <label for="q4a">A) Amy's photo (seen by 4 people)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q4" id="q4b" value="B">
+                    <label for="q4b">B) Carl's photo (seen by 5 people)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q4" id="q4c" value="C">
+                    <label for="q4c">C) Dana's photo (seen by 6 people)</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q4" id="q4d" value="D">
+                    <label for="q4d">D) Emma's photo (seen by 5 people)</label>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <label class="work-label">Show Your Work:</label>
+                <textarea class="work-area" placeholder="List who sees each person's photo when shared..."></textarea>
+            </div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="question">
+            <div class="question-header">
+                <div class="question-number">5</div>
+                <div class="question-title">Card Sorting Station</div>
+            </div>
+            <div class="question-content">
+                <p><strong>Background:</strong> At a sorting station, workers stand in a line. Each worker:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Looks at cards passing by from left to right</li>
+                    <li>If two adjacent cards are in wrong order, swaps them</li>
+                    <li>Otherwise, lets them pass unchanged</li>
+                    <li>Cards go through all workers once</li>
+                </ul>
+                
+                <div class="example-box">
+                    <strong>Example with cards [3, 1, 2]:</strong><br>
+                    Worker 1 sees: 3, 1 → swaps to 1, 3<br>
+                    Worker 1 sees: 3, 2 → swaps to 2, 3<br>
+                    Result after Worker 1: [1, 2, 3] ✓ Sorted!<br>
+                    <br>
+                    <strong>One worker was enough for this example</strong>
+                </div>
+                
+                <p><strong>Problem:</strong> You have 5 cards in complete reverse order: <strong>[5, 4, 3, 2, 1]</strong></p>
+                <p>What is the minimum number of workers needed to guarantee the cards end up fully sorted as [1, 2, 3, 4, 5]?</p>
+            </div>
+            
+            <div class="choices">
+                <div class="choice">
+                    <input type="radio" name="q5" id="q5a" value="A">
+                    <label for="q5a">A) 2 workers</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q5" id="q5b" value="B">
+                    <label for="q5b">B) 3 workers</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q5" id="q5c" value="C">
+                    <label for="q5c">C) 4 workers</label>
+                </div>
+                <div class="choice">
+                    <input type="radio" name="q5" id="q5d" value="D">
+                    <label for="q5d">D) 5 workers</label>
+                </div>
+            </div>
+            
+            <div class="work-section">
+                <label class="work-label">Show Your Work:</label>
+                <textarea class="work-area" placeholder="Show what happens after each worker processes the cards..."></textarea>
+            </div>
+        </div>
+        
+        <!-- NEW SUBMISSION INSTRUCTIONS BLOCK -->
+        <div class="submission-instructions no-print">
+            <h2>📢 Submission Instructions</h2>
+            <p><strong>Please follow these steps to save and submit your completed worksheet:</strong></p>
+            <ol>
+                <li>Complete all fields and questions above.</li>
+                <li>Click the **"🖨️ Print Worksheet"** button below.</li>
+                <li>In the print menu that appears, change the **Destination** (or Printer) option to **"Save as PDF"** or **"Microsoft Print to PDF"**.</li>
+                <li>Save the file with your name: **<code>[YourName]_Bebras_Worksheet.pdf</code>**</li>
+                <li>Upload the saved PDF file to the Google Drive folder provided by your teacher.</li>
+            </ol>
+            <p style="font-style: italic; margin-top: 15px;">Your final PDF will contain all your answers and explanations.</p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>When you're finished:</strong> Review your answers and explanations, then use the print button to create your submission file.</p>
+        </div>
+        
+        <button class="print-btn no-print" onclick="window.print()">🖨️ Print Worksheet</button>
+    </div>
+    
+    <!-- Retaining the local storage script for students' convenience, so their work saves if they close the tab -->
+    <script>
+        // Auto-save to localStorage as students type
+        document.querySelectorAll('.work-area').forEach((area, index) => {
+            area.addEventListener('input', function() {
+                localStorage.setItem('homework_q' + (index + 1), this.value);
+            });
+            
+            // Load saved work
+            const saved = localStorage.getItem('homework_q' + (index + 1));
+            if (saved) {
+                area.value = saved;
+            }
+        });
+        
+        // Save radio selections
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                localStorage.setItem(this.name, this.value);
+            });
+            
+            // Load saved selections
+            const saved = localStorage.getItem(radio.name);
+            if (saved === radio.value) {
+                radio.checked = true;
+            }
+        });
+        
+        // Save text inputs
+        document.querySelectorAll('input[type="text"], input[type="date"]').forEach(input => {
+            input.addEventListener('input', function() {
+                localStorage.setItem('field_' + this.placeholder, this.placeholder || input.name, this.value);
+            });
+            
+            // Load saved values
+            const saved = localStorage.getItem('field_' + input.placeholder);
+            if (saved) {
+                input.value = saved;
+            }
+        });
+    </script>
+</body>
+</html>
